@@ -25,4 +25,12 @@ public class Block {
     public String getPreviousHash() {
         return previousHash;
     }
+
+    public String getData() {
+        return data;
+    }
+
+    public long getTimestamp() {
+        return timestamp;
+    }
 }

@@ -8,17 +8,17 @@ public class BlockFactory {
         final String previousHash,
         final String data
     ) {
-        final long currentMillis = System.currentTimeMillis();
+        final long timestamp = System.currentTimeMillis();
 
         return new Block(
-            DependencyInjection.getHashService().hash(
-                previousHash +
-                currentMillis +
-                data
+            DependencyInjection.getBlockchainService().calculateHash(
+                previousHash,
+                data,
+                timestamp
             ),
             previousHash,
             data,
-            currentMillis
+            timestamp
         );
     }
 }
