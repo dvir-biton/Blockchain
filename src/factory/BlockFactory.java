@@ -6,17 +6,19 @@ import entities.Block;
 public class BlockFactory {
     public static Block createBlock(
         final String previousHash,
-        final long timestamp,
         final String data
     ) {
+        final long currentMillis = System.currentTimeMillis();
+
         return new Block(
             DependencyInjection.getHashService().hash(
                 previousHash +
-                timestamp +
+                currentMillis +
                 data
             ),
             previousHash,
-            data
+            data,
+            currentMillis
         );
     }
 }

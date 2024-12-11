@@ -1,7 +1,7 @@
 package di;
 
-import services.HashService;
-import services.SHA256HashService;
+import services.hash.HashService;
+import services.hash.SHA256HashService;
 
 public class DependencyInjection {
     private static HashService hashService = null;

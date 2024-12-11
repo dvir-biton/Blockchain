@@ -9,12 +9,13 @@ public class Block {
     public Block(
         final String hash,
         final String previousHash,
-        final String data
+        final String data,
+        final long timestamp
     ) {
         this.hash = hash;
         this.previousHash = previousHash;
         this.data = data;
-        timestamp = System.currentTimeMillis();
+        this.timestamp = timestamp;
     }
 
     public String getHash() {

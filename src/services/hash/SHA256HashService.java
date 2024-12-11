@@ -1,4 +1,4 @@
-package services;
+package services.hash;
 
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
