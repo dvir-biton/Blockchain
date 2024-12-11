@@ -14,11 +14,13 @@ public class BlockFactory {
             DependencyInjection.getBlockchainService().calculateHash(
                 previousHash,
                 data,
-                timestamp
+                timestamp,
+                0
             ),
             previousHash,
             data,
-            timestamp
+            timestamp,
+            0
         );
     }
 }

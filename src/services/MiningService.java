@@ -25,6 +25,9 @@ public class MiningService {
             nonce++;
         } while (!hash.substring(0, difficulty).equals(target));
 
+        System.out.println("Block mined: " + hash);
+
         return new Block(hash, block.getPreviousHash(), block.getData(), block.getTimestamp(), nonce - 1);
     }
 }
+

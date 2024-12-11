@@ -1,6 +1,7 @@
 package di;
 
 import services.BlockchainService;
+import services.MiningService;
 import services.hash.HashService;
 import services.hash.SHA256HashService;
 
@@ -19,5 +20,9 @@ public class DependencyInjection {
 
     public static BlockchainService getBlockchainService() {
         return blockchainService;
+    }
+
+    public static MiningService getMiningService(final int difficulty) {
+        return new MiningService(difficulty);
     }
 }
