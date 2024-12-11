@@ -14,8 +14,15 @@ public class BlockchainService {
             currentBlock = blockchain.get(i);
             previousBlock = blockchain.get(i - 1);
 
-            final String currentBlockHash = calculateHash(currentBlock.getPreviousHash(), currentBlock.getData(), currentBlock.getTimestamp());
-            if(!currentBlock.getHash().equals(currentBlockHash) || !previousBlock.getHash().equals(currentBlock.getPreviousHash())){
+            final String recalculatedHash = calculateHash(
+                currentBlock.getPreviousHash(),
+                currentBlock.getData(),
+                currentBlock.getTimestamp(),
+                currentBlock.getNonce()
+            );
+
+            if (!currentBlock.getHash().equals(recalculatedHash) ||
+                    !previousBlock.getHash().equals(currentBlock.getPreviousHash())) {
                 return false;
             }
         }
@@ -26,12 +33,14 @@ public class BlockchainService {
     public String calculateHash(
         final String previousHash,
         final String data,
-        final long currentMillis
+        final long timestamp,
+        final int nonce
     ) {
         return DependencyInjection.getHashService().hash(
             previousHash +
-            currentMillis +
-            data
+                timestamp +
+                nonce +
+                data
         );
     }
 }
